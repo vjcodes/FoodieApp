@@ -42,6 +42,10 @@
   margin: 1%;
 }
 
+.res-logo{
+  height: 20rem;
+}
+
 .res-card:hover {
   cursor: pointer;
   border: 1px solid black;
@@ -53,4 +57,10 @@
 
 .res-logo {
   width: 100%;
+}
+
+.filter-btn{
+  margin-top: 2%;
+  padding: 10px;
+  cursor: pointer;
 }
