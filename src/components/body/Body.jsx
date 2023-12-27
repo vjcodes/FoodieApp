@@ -1,6 +1,7 @@
 import RestaurantCard from "../restaurantCard/RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "../shimmerCard/shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -21,7 +22,7 @@ const Body = () => {
       ?.gridElements?.infoWithStyle?.restaurants;
     // console.log(getAllRestaurants);
     setAllRestaurants(getAllRestaurants);
-    setFilteredRestaurants(getAllRestaurants)
+    setFilteredRestaurants(getAllRestaurants);
   };
 
   useEffect(() => {
@@ -52,9 +53,7 @@ const Body = () => {
               // Filter the restaurant cards and update the UI
               // searchText
               const filteredRestaurantsList = allRestaurants?.filter((res) =>
-                res?.info?.name
-                  .toLowerCase()
-                  .includes(searchText.toLowerCase())
+                res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRestaurants(filteredRestaurantsList);
             }}
@@ -73,7 +72,13 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurants?.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            to={`/restaurants/${restaurant.info.id}`}
+            style={{ textDecoration: "none", color: "black" }}
+            key={restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
