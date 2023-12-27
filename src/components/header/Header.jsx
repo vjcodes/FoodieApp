@@ -1,9 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Foodie from "../../assets/Foodie.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   // let btnName = "login";
   const [btnName, setBtnName] = useState("Login");
+
+  // if no dependency array => useEffect is called on every render
+  useEffect(() => {
+    console.log("use effect called");
+  });
+
+  // if empty dependency array is empty = [] =>
+  // useEffect will only be called on initial render and only once on initial render
+  useEffect(() => {
+    console.log("use effect empty dep array called");
+  }, []);
+
+  // if dependency aaray has some value, eg: [btnName] =>
+  // useEffect will be called when that value changes
+  useEffect(() => {
+    console.log("use effect with value in dep array called");
+  }, [btnName]);
+
   return (
     <>
       <div className="header">
@@ -12,9 +31,15 @@ const Header = () => {
         </div>
         <div className="nav-items">
           <ul>
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About Us</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact Us</Link>
+            </li>
             <li>Cart</li>
             <button
               className="login"

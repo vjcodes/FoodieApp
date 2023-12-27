@@ -33,11 +33,13 @@
 .res-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .res-card {
   padding: 5px;
   width: 20rem;
+  min-height: 39rem;
   background-color: rgb(220, 217, 217);
   margin: 1%;
 }
