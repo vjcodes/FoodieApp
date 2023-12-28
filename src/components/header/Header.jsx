@@ -8,19 +8,19 @@ const Header = () => {
 
   // if no dependency array => useEffect is called on every render
   useEffect(() => {
-    console.log("use effect called");
+    // console.log("use effect called");
   });
 
   // if empty dependency array is empty = [] =>
   // useEffect will only be called on initial render and only once on initial render
   useEffect(() => {
-    console.log("use effect empty dep array called");
+    // console.log("use effect empty dep array called");
   }, []);
 
   // if dependency aaray has some value, eg: [btnName] =>
   // useEffect will be called when that value changes
   useEffect(() => {
-    console.log("use effect with value in dep array called");
+    // console.log("use effect with value in dep array called");
   }, [btnName]);
 
   return (
