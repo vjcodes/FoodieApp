@@ -8,6 +8,7 @@ const RestaurantMenu = () => {
   //   const [restaurantMenuItems, setRestaurantMenuItems] = useState([]);
 
   const { resId } = useParams();
+  
 
   const fetchMenu = async () => {
     const data = await fetch(
