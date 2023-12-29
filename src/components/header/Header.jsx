@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Foodie from "../../assets/Foodie.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/customHooks/useOnlineStatus";
+import UserContext from "../../utils/UserContext";
 
 const Header = () => {
   // let btnName = "login";
@@ -23,8 +24,11 @@ const Header = () => {
   useEffect(() => {
     // console.log("use effect with value in dep array called");
   }, [btnName]);
-
+ 
   const onlineStatus = useOnlineStatus();
+
+  const data = useContext(UserContext)
+  console.log(data)
 
   return (
     <>
@@ -58,6 +62,7 @@ const Header = () => {
             >
               {btnName}
             </button>
+            <li className="px-4 font-bold">{data.loggedInUser}</li>
           </ul>
         </div>
       </div>

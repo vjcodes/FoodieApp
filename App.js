@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header/Header";
 import Body from "./src/components/body/Body";
@@ -7,15 +7,28 @@ import About from "./src/components/aboutUs/About";
 import Contact from "./src/components/contactUs/Contact";
 import Error from "./src/components/errorPage/Error";
 import RestaurantMenu from "./src/components/restaurantMenu/RestaurantMenu";
+import UserContext from "./src/utils/UserContext";
 
 const Grocery = lazy(() => import("./src/components/grocery/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  //authentication
+  useEffect(() => {
+    const data = {
+      name: "Vinayak Jaiswal",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName: setUserName }} >
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
