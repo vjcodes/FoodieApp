@@ -1,4 +1,8 @@
-.header {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,7 +20,6 @@
 }
 
 .nav-items {
-  /* width: 70%;  */
   display: flex;
 }
 
@@ -44,7 +47,7 @@
   margin: 1%;
 }
 
-.res-logo{
+.res-logo {
   height: 20rem;
 }
 
@@ -61,23 +64,21 @@
   width: 100%;
 }
 
-.filter-btn{
-  /* margin-top: 2%; */
-  /* padding: 5px; */
+.filter-btn {
   cursor: pointer;
 }
 
-.login{
+.login {
   padding: 0 10px;
   cursor: pointer;
 }
 
-.filter{
+.filter {
   margin-top: 1%;
   display: flex;
 }
 
-.user-card{
+.user-card {
   border: 1px solid black;
   padding: 2%;
-}
+} */
