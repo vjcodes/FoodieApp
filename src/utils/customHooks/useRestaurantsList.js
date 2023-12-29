@@ -14,8 +14,18 @@ const useRestaurantsList = () => {
       const getAllRestaurants = await jsonData?.data?.cards[4]?.card?.card
         ?.gridElements?.infoWithStyle?.restaurants;
 
+      await getAllRestaurants.forEach((element, index) => {
+        if (index % 2 === 0) {
+          element.info.promoted = true;
+        } else {
+          element.info.promoted = false;
+        }
+      });
+
       setAllRestaurants(getAllRestaurants);
       setFilteredRestaurants(getAllRestaurants);
+
+      console.log(getAllRestaurants);
     };
 
     fetchData();
