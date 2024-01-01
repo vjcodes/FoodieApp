@@ -3,32 +3,25 @@ import Foodie from "../../assets/Foodie.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/customHooks/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  // let btnName = "login";
   const [btnName, setBtnName] = useState("Login");
 
-  // if no dependency array => useEffect is called on every render
-  useEffect(() => {
-    // console.log("use effect called");
-  });
-
-  // if empty dependency array is empty = [] =>
-  // useEffect will only be called on initial render and only once on initial render
-  useEffect(() => {
-    // console.log("use effect empty dep array called");
-  }, []);
-
-  // if dependency aaray has some value, eg: [btnName] =>
-  // useEffect will be called when that value changes
-  useEffect(() => {
-    // console.log("use effect with value in dep array called");
-  }, [btnName]);
- 
   const onlineStatus = useOnlineStatus();
 
-  const data = useContext(UserContext)
-  console.log(data)
+  const data = useContext(UserContext);
+  console.log(data);
+
+  // You should always take the specific state of a store not the whole store
+  // const store = useSelector(store) //THIS IS NOT RIGHT APPROACH
+  // ==> as if we take the whole store in this component
+  // then if any changes happen in any state throughout the store which has
+  // no relation with this component then also this component will get
+  // rendered, which is not right as it can make our app slow
+
+  // subscribing to the store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <>
@@ -53,7 +46,9 @@ const Header = () => {
             <li className="px-4">
               <Link to="/grocery">Grocery</Link>
             </li>
-            <li className="px-4">Cart</li>
+            <li className="px-4 font-bold text-xl">
+              <Link to="/cart">Cart ({cartItems.length} items)</Link>
+            </li>
             <button
               className="login px-4"
               onClick={() => {
